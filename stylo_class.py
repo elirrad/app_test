@@ -18,7 +18,7 @@ class Stylo:
         print("Effacer")
 
 
-stylo1 = Stylo("rouge", "bic")
+stylo1 = Stylo(couleur="rouge", marque="bic")
 print(stylo1.couleur)
 print(stylo1.encre)
 stylo1.ecrire("Bonjour")

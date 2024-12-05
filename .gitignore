@@ -1,2 +1,49 @@
-.venv/
+# Fichiers et dossiers générés par Python
+__pycache__/
+*.py[cod]
+*$py.class
+
+# Environnements virtuels
 venv/
+env/
+.venv/
+
+# Fichiers de configuration d'environnement
+.env
+.env.*
+
+# Fichiers de logs
+*.log
+
+# Fichiers de base de données
+*.sqlite3
+*.db
+
+# Fichiers de cache
+*.cache
+*.pyc
+
+# Fichiers d'outils de packaging
+*.egg
+*.egg-info/
+dist/
+build/
+*.wheel
+
+# Jupyter Notebook
+.ipynb_checkpoints/
+
+# Configuration spécifique à certains IDE
+.vscode/
+.idea/
+*.iml
+
+# Fichiers spécifiques au système d'exploitation
+.DS_Store
+Thumbs.db
+
+# Fichiers temporaire ou spécifiques à l'utilisateur
+*.bak
+*.swp
+*.tmp
+~$*
