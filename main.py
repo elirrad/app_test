@@ -1,52 +1,47 @@
+from fastapi import FastAPI
+from sqlalchemy import create_engine
+from sqlalchemy.ext.declarative import declarative_base
+from sqlalchemy.orm import sessionmaker
 
-print("salut elimeleh le meilleur des petits freres")
-from fastapi import FastAPI, APIRouter
-import sqlalchemy
+DATABASE_URL = "sqlite:///./task.db"
+engine = create_engine(DATABASE_URL, connect_args={"check_same_thread": False})
+SessionLocal = sessionmaker(autocommit=False, autoflush=False, bind=engine)
+Base = declarative_base()
+
 app = FastAPI()
-#creation de table
+# creation de table
 # CREATE TABLE userss (,
 #     nom TEXT NOT NULL,
 #     prenom TEXT NOT NULL,
 #     age INT NOT NULL,
 # );
-from sqlalchemy import Integer, String
-from sqlalchemy.orm import Mapped, mapped_column
-
-#connexion a la DB
-import sqlite3
-connection = sqlite3.connect('DB.db')
-
-class User(db.Model):
-    id: Mapped[int] = mapped_column(primary_key=True)
-    username: Mapped[str] = mapped_column(unique=True)
-    email: Mapped[str]
 
 
-
-
-
-users=[{"name":"elimeleh","age":18},{"name":"eli","age":18}]
+users = [{"name": "elimeleh", "age": 18}, {"name": "eli", "age": 18}]
 
 
 @app.get("/")
 def hello(name):
-    return {"message": "Hello "+name}
+    return {"message": "Hello " + name}
+
+
 @app.get("/age")
 def get_age(age):
-    return{"age":age}
+    return {"age": age}
+
+
 @app.get("/user")
 def get_user(name):
     for user in users:
-        if name==user["name"]:
+        if name == user["name"]:
             return user
 
-    return{
-        "error":"not fond",
+    return {
+        "error": "not fond",
     }
 
 
 if __name__ == "__main__":
-    app.include_router(app)
     import uvicorn
 
     uvicorn.run(app)
